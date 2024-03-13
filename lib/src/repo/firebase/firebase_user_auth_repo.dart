@@ -53,31 +53,46 @@ class FirebaseUserAuthRepo extends UserAuthRepo {
   Future<UserAuth?> signinWithGoogle() async {
     log("Signing in with Google");
     // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    GoogleSignInAccount? googleUser;
+    try {
+      googleUser = await GoogleSignIn().signIn();
+    } catch (e) {
+      log(e.toString());
+      return Future.value(null);
+    }
+    if (googleUser == null) {
+      log('Google login flow cancelled');
+      return Future.value(null);
+    }
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+    try {
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    final userCredential =
-        await FirebaseAuth.instance.signInWithCredential(credential);
-    if (userCredential.user != null) {
-      log("Sign in with Google successful");
-      return UserAuth(
-        id: userCredential.user!.uid,
-        accessToken: userCredential.credential?.accessToken ?? '',
-        name: userCredential.user?.displayName,
-        emailAddress: userCredential.user?.email,
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
-    } else {
-      return null;
+
+      // Once signed in, return the UserCredential
+      final userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      if (userCredential.user != null) {
+        log("Sign in with Google successful");
+        return UserAuth(
+          id: userCredential.user!.uid,
+          accessToken: userCredential.credential?.accessToken ?? '',
+          name: userCredential.user?.displayName,
+          emailAddress: userCredential.user?.email,
+        );
+      } else {
+        return null;
+      }
+    } catch (e) {
+      log(e.toString());
+      return Future.value(null);
     }
   }
 
