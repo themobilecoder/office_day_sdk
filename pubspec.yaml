@@ -1,6 +1,6 @@
 name: office_day_sdk
 description: "Flutter package for loading and saving in-office days"
-version: 1.1.0
+version: 2.0.0
 homepage:
 
 environment:

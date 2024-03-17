@@ -5,14 +5,17 @@ part 'office_status_hive.g.dart';
 @HiveType(typeId: 1)
 enum OfficeStatusHive {
   @HiveField(0)
-  inOffice,
+  office,
 
   @HiveField(1)
-  outOffice,
+  remote,
 
   @HiveField(2)
-  leave,
+  holiday,
 
   @HiveField(3)
+  sick,
+
+  @HiveField(4)
   none,
 }

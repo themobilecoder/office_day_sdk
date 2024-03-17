@@ -1,3 +1,7 @@
+## 2.0.0
+
+* BREAKING CHANGE - Update `OfficeStatus` values to cover more cases
+
 ## 1.0.0
 
 * Add `OfficeDayRepo` interface for reading and saving office days

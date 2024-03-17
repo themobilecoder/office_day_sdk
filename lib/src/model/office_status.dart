@@ -1,6 +1,11 @@
 enum OfficeStatus {
-  inOffice,
-  outOffice,
-  leave,
-  none,
+  office,
+  remote,
+  holiday,
+  sick,
+  none;
+
+  String toLowerCase() {
+    return name.toLowerCase();
+  }
 }

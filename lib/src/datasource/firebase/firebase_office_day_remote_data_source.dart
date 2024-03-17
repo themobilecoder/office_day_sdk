@@ -112,14 +112,17 @@ class FirebaseOfficeDayRemoteDataSource extends OfficeDayRemoteDataSource {
   }
 
   OfficeDay _toOfficeDay(String yearMonthDay, String status) {
-    OfficeStatus statusEnum;
+    late OfficeStatus statusEnum;
     final statusLowerCase = status.toLowerCase();
-    if (statusLowerCase == OfficeStatus.inOffice.name.toLowerCase()) {
-      statusEnum = OfficeStatus.inOffice;
-    } else if (statusLowerCase == OfficeStatus.outOffice.name.toLowerCase()) {
-      statusEnum = OfficeStatus.outOffice;
-    } else if (statusLowerCase == OfficeStatus.leave.name.toLowerCase()) {
-      statusEnum = OfficeStatus.leave;
+
+    if (statusLowerCase == OfficeStatus.office.toLowerCase()) {
+      statusEnum = OfficeStatus.office;
+    } else if (statusLowerCase == OfficeStatus.remote.toLowerCase()) {
+      statusEnum = OfficeStatus.remote;
+    } else if (statusLowerCase == OfficeStatus.holiday.toLowerCase()) {
+      statusEnum = OfficeStatus.holiday;
+    } else if (statusLowerCase == OfficeStatus.sick.toLowerCase()) {
+      statusEnum = OfficeStatus.sick;
     } else {
       statusEnum = OfficeStatus.none;
     }

@@ -97,16 +97,24 @@ extension _OfficeDayHiveConversion on OfficeDay {
 extension _OfficeStatusHiveConversion on OfficeStatus {
   OfficeStatusHive toOfficeStatusHive() {
     late OfficeStatusHive statusHive;
-    if (this == OfficeStatus.inOffice) {
-      statusHive = OfficeStatusHive.inOffice;
-    } else if (this == OfficeStatus.outOffice) {
-      statusHive = OfficeStatusHive.outOffice;
-    }
-    if (this == OfficeStatus.leave) {
-      statusHive = OfficeStatusHive.leave;
-    }
-    if (this == OfficeStatus.none) {
-      statusHive = OfficeStatusHive.none;
+    switch (this) {
+      case OfficeStatus.office:
+        statusHive = OfficeStatusHive.office;
+        break;
+      case OfficeStatus.remote:
+        statusHive = OfficeStatusHive.remote;
+        break;
+      case OfficeStatus.holiday:
+        statusHive = OfficeStatusHive.holiday;
+        break;
+      case OfficeStatus.sick:
+        statusHive = OfficeStatusHive.sick;
+        break;
+      case OfficeStatus.none:
+        statusHive = OfficeStatusHive.none;
+        break;
+      default:
+        break;
     }
     return statusHive;
   }
@@ -115,13 +123,13 @@ extension _OfficeStatusHiveConversion on OfficeStatus {
 extension _OfficeStatusConversion on OfficeStatusHive {
   OfficeStatus toOfficeStatus() {
     late OfficeStatus statusHive;
-    if (this == OfficeStatusHive.inOffice) {
-      statusHive = OfficeStatus.inOffice;
-    } else if (this == OfficeStatusHive.outOffice) {
-      statusHive = OfficeStatus.outOffice;
+    if (this == OfficeStatusHive.office) {
+      statusHive = OfficeStatus.office;
+    } else if (this == OfficeStatusHive.remote) {
+      statusHive = OfficeStatus.remote;
     }
-    if (this == OfficeStatusHive.leave) {
-      statusHive = OfficeStatus.leave;
+    if (this == OfficeStatusHive.holiday) {
+      statusHive = OfficeStatus.holiday;
     }
     if (this == OfficeStatusHive.none) {
       statusHive = OfficeStatus.none;

@@ -14,32 +14,37 @@ class OfficeStatusHiveAdapter extends TypeAdapter<OfficeStatusHive> {
   OfficeStatusHive read(BinaryReader reader) {
     switch (reader.readByte()) {
       case 0:
-        return OfficeStatusHive.inOffice;
+        return OfficeStatusHive.office;
       case 1:
-        return OfficeStatusHive.outOffice;
+        return OfficeStatusHive.remote;
       case 2:
-        return OfficeStatusHive.leave;
+        return OfficeStatusHive.holiday;
       case 3:
+        return OfficeStatusHive.sick;
+      case 4:
         return OfficeStatusHive.none;
       default:
-        return OfficeStatusHive.inOffice;
+        return OfficeStatusHive.office;
     }
   }
 
   @override
   void write(BinaryWriter writer, OfficeStatusHive obj) {
     switch (obj) {
-      case OfficeStatusHive.inOffice:
+      case OfficeStatusHive.office:
         writer.writeByte(0);
         break;
-      case OfficeStatusHive.outOffice:
+      case OfficeStatusHive.remote:
         writer.writeByte(1);
         break;
-      case OfficeStatusHive.leave:
+      case OfficeStatusHive.holiday:
         writer.writeByte(2);
         break;
-      case OfficeStatusHive.none:
+      case OfficeStatusHive.sick:
         writer.writeByte(3);
+        break;
+      case OfficeStatusHive.none:
+        writer.writeByte(4);
         break;
     }
   }
