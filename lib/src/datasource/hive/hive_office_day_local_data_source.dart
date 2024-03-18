@@ -122,18 +122,19 @@ extension _OfficeStatusHiveConversion on OfficeStatus {
 
 extension _OfficeStatusConversion on OfficeStatusHive {
   OfficeStatus toOfficeStatus() {
-    late OfficeStatus statusHive;
-    if (this == OfficeStatusHive.office) {
-      statusHive = OfficeStatus.office;
-    } else if (this == OfficeStatusHive.remote) {
-      statusHive = OfficeStatus.remote;
+    switch (this) {
+      case OfficeStatusHive.office:
+        return OfficeStatus.office;
+      case OfficeStatusHive.remote:
+        return OfficeStatus.remote;
+      case OfficeStatusHive.holiday:
+        return OfficeStatus.holiday;
+      case OfficeStatusHive.sick:
+        return OfficeStatus.sick;
+      case OfficeStatusHive.none:
+        return OfficeStatus.none;
+      default:
+        return OfficeStatus.none;
     }
-    if (this == OfficeStatusHive.holiday) {
-      statusHive = OfficeStatus.holiday;
-    }
-    if (this == OfficeStatusHive.none) {
-      statusHive = OfficeStatus.none;
-    }
-    return statusHive;
   }
 }

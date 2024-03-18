@@ -1,3 +1,7 @@
+## 2.1.0
+
+* Fix office status bugs
+
 ## 2.0.0
 
 * BREAKING CHANGE - Update `OfficeStatus` values to cover more cases

@@ -16,7 +16,7 @@ Add this to your `pubspec.yaml` under `dependencies:` to use the latest released
   office_day_sdk:
     git:
       url: https://github.com/themobilecoder/office_day_sdk
-      ref: 2.0.0
+      ref: 2.1.0
 ```
 
 ## Example
