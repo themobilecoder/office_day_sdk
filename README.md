@@ -7,6 +7,18 @@
 - Uses `Firebase Firestore` for remote storage.
 - Can use `Google sign-in` or `anonymous` for authentication
 
+
+## Import to your project
+
+Add this to your `pubspec.yaml` under `dependencies:` to use the latest released version.
+
+```
+  office_day_sdk:
+    git:
+      url: https://github.com/themobilecoder/office_day_sdk
+      ref: 2.0.0
+```
+
 ## Example
 
 ```dart
@@ -98,3 +110,23 @@ officeDayRepo.setUser(userAuth);
 List<OfficeDay> officeDays = officeDayRepo.officeDays;
 ```
 
+## Troubleshooting
+
+### Installing on iOS
+
+If you are getting errors with Fireabse when building the app regarding CocoaPods:
+
+```
+Error: CocoaPods's specs repository is too out-of-date to satisfy dependencies.
+To update the CocoaPods specs, run:
+  pod repo update
+
+Error running pod install
+Error launching application on iPhone 15 Pro.
+```
+
+then you might need to do the following:
+
+1. `cd ios`
+2. `pod repo update`
+3. `pod install`
