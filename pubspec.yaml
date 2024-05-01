@@ -1,6 +1,6 @@
 name: office_day_sdk
 description: "Flutter package for loading and saving in-office days"
-version: 2.1.0
+version: 2.2.0
 homepage:
 
 environment:
@@ -8,9 +8,9 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  cloud_firestore: ^4.14.0
+  cloud_firestore: ^4.17.2
   equatable: ^2.0.5
-  firebase_auth: ^4.16.0
+  firebase_auth: ^4.19.4
   flutter:
     sdk: flutter
   google_sign_in: ^6.2.1

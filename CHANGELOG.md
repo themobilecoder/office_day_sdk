@@ -1,3 +1,6 @@
+## 2.2.0
+* Update firebase core dependency
+
 ## 2.1.0
 
 * Fix office status bugs
