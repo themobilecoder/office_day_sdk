@@ -1,10 +1,47 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'office_status_hive.dart';
+part of 'hive_adapters.dart';
 
 // **************************************************************************
-// TypeAdapterGenerator
+// AdaptersGenerator
 // **************************************************************************
+
+class OfficeDayHiveAdapter extends TypeAdapter<OfficeDayHive> {
+  @override
+  final int typeId = 0;
+
+  @override
+  OfficeDayHive read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return OfficeDayHive(
+      day: fields[0] as DateTime,
+      status: fields[1] as OfficeStatusHive,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, OfficeDayHive obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.day)
+      ..writeByte(1)
+      ..write(obj.status);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OfficeDayHiveAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
 
 class OfficeStatusHiveAdapter extends TypeAdapter<OfficeStatusHive> {
   @override
@@ -33,19 +70,14 @@ class OfficeStatusHiveAdapter extends TypeAdapter<OfficeStatusHive> {
     switch (obj) {
       case OfficeStatusHive.office:
         writer.writeByte(0);
-        break;
       case OfficeStatusHive.remote:
         writer.writeByte(1);
-        break;
       case OfficeStatusHive.holiday:
         writer.writeByte(2);
-        break;
       case OfficeStatusHive.sick:
         writer.writeByte(3);
-        break;
       case OfficeStatusHive.none:
         writer.writeByte(4);
-        break;
     }
   }
 
